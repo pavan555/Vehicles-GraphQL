@@ -18,6 +18,7 @@ Types are assumed to be nullable and singular by default in GraphQL
 > Scalar -> Int, String, Float, Boolean, ID
 ### 3. Enum -> predefined set of finite values
 
+
 #### type modifiers
     Non null -> !
     list -> []
