@@ -23,6 +23,18 @@ Grouping is as follows:
 
 Each Group can have the following properties:
 
-1. Title
-2. Description
-3. Image
+1. Name -> String
+2. Description -> HTML
+3. Image -> URL
+
+There are two types of groups:
+1. Manual Group
+   - Created by the client by selecting cars
+2. Automatic Group
+    - Created by the system based on the rules defined by the client
+    - Array of features/rules.
+    - Whether this features should be "OR" or "AND" based on the client selection
+
+Each car can have multiple groups
+
+Each group can have multiple cars
