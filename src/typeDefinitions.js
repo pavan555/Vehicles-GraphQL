@@ -85,6 +85,7 @@ input vehicleEntry {
     model: String
     capacity: Int
     logs: [String]
+    onSale: Boolean = false
 }
 
 """
@@ -124,11 +125,23 @@ type Query {
     age: Int!,
     gender: gender!
     d1: Data,
-    searchVehicle(type: VehicleType!): [VehicleSearch]
-    updateVehicle(vehicle: vehicleEntry!): VehicleSearch
     categories: [Category!]!
     category(id: ID!):  Category,
     vehicles(filterSearch: filterSearch): [VehicleSearch!]!,
+}
+
+input ReviewData{
+    title: String!,
+    comment: String!,
+    rating: Int!
+}
+
+type Mutation {
+    addVehicle(vehicle: vehicleEntry!): VehicleSearch!
+    addCategory(name: String!): Category!
+    addReview(productId: ID!, reviewData: ReviewData!): Review!
+    updateReviewComment(id: ID!, comment: String!): Review!,
+    deleteReview(id: ID!): Review!
 }
 
 `

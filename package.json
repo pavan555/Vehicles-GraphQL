@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf node_modules",
+
     "start": "node ./src/bin/server",
     "preinstall": "npx only-allow pnpm",
     "start-graphql": "export APOLLO_ROUTER_LOG=trace && nodemon ./src/graphql",
@@ -18,7 +19,8 @@
     "@apollo/server": "^4.12.1",
     "express": "^5.1.0",
     "graphql": "^16.11.0",
-    "response-time": "^2.3.3"
+    "response-time": "^2.3.3",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

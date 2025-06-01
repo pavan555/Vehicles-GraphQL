@@ -4,9 +4,10 @@ import typeDefs from "./typeDefinitions.js";
 import {categories, reviews, vehicles} from "./db.js";
 import {Query} from "./resolvers/Query.js";
 import {Category} from "./resolvers/Category.js";
-import {Car} from "./resolvers/Car.js";
+import {Bike, Car} from "./resolvers/Car.js";
 import {Vehicle} from "./resolvers/Vehicle.js";
 import {VehicleSearch} from "./resolvers/VehicleSearch.js";
+import {Mutation} from "./resolvers/Mutation.js";
 
 
 const apolloServer = new ApolloServer({
@@ -16,7 +17,9 @@ const apolloServer = new ApolloServer({
         Category,
         Vehicle,
         Car,
-        VehicleSearch
+        Bike,
+        VehicleSearch,
+        Mutation
     }
 })
 

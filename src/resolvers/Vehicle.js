@@ -1,4 +1,3 @@
-
 export const Vehicle = {
     __resolveType(obj) {
         switch (obj.wheels) {

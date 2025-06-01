@@ -8,3 +8,10 @@ export const Car = {
         return reviews.filter(r => r.productId === parent.id);
     }
 }
+
+export const Bike = {
+    reviews: (parent, args, {reviews}) => {
+        console.log("parent ", parent, "args", args);
+        return reviews.filter(r => r.productId === parent.id);
+    }
+}

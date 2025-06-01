@@ -12,8 +12,8 @@ export const Category = {
 export const getFilteredVehiclesBasedOnFilterObject = (filterSearch, {vehicles, reviews}) => {
     let filteredVehicles = vehicles;
     // For simplicity, returning the first vehicle
-    if(Object.keys(filterSearch).length !== 0) {
-        const {onSale, avgRating} = filterSearch;
+    if(Object.keys(filterSearch || {}).length !== 0) {
+        const {onSale, avgRating} = filterSearch || {};
         if(["true", "false"].includes(onSale.toString())) {
             filteredVehicles = vehicles.filter(v => v.onSale === onSale)
         }
