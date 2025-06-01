@@ -20,3 +20,9 @@ Grouping is as follows:
    - Car year
    - Group which is created by the client
 6. Client can publish/unpublish groups
+
+Each Group can have the following properties:
+
+1. Title
+2. Description
+3. Image
