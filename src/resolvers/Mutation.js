@@ -78,5 +78,10 @@ export const Mutation = {
         const deletedReview = reviews[reviewIdx];
         reviews.splice(reviewIdx, 1);
         return deletedReview;
+    },
+    updateDate: (parent, {id, updateDate}, {vehicles}) => {
+        console.log("updateDate called with id:", id, "and date:", updateDate, updateDate.iPAddress);
+        console.log("parent:", parent);
+        return updateDate.date;
     }
 }

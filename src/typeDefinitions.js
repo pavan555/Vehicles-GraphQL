@@ -29,6 +29,8 @@ interface Vehicle {
     reviews: [Review!]
     onSale: Boolean!
 }
+
+
 """ This is a car vehicle type schema """
 type Car implements Vehicle {
     id: ID!
@@ -142,7 +144,17 @@ type Mutation {
     addReview(productId: ID!, reviewData: ReviewData!): Review!
     updateReviewComment(id: ID!, comment: String!): Review!,
     deleteReview(id: ID!): Review!
+    updateDate(id: ID!,updateDate: UpdateDate ): URL
 }
+
+input UpdateDate{
+    date: Date!, 
+    url: URL!,
+    iPAddress: IPAddress = "192.189123.2.1"
+}
+scalar Date @specifiedBy(url: "https://graphql.org/learn/schema/#scalar-types")
+scalar URL @specifiedBy(url: "https://google.com")
+scalar IPAddress
 
 `
 
