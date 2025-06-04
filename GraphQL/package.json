@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf node_modules",
+    "clean": "rm -rf ../node_modules",
 
-    "start": "node ./src/bin/server",
+    "start": "node GraphQL/src/bin/server",
     "preinstall": "npx only-allow pnpm",
-    "start-graphql": "export APOLLO_ROUTER_LOG=trace && nodemon ./src/graphql",
+    "start-graphql": "export APOLLO_ROUTER_LOG=trace && ../node_modules/.bin/nodemon GraphQL/src/graphql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
