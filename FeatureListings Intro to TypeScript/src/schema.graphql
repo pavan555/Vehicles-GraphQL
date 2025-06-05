@@ -11,7 +11,10 @@ type Listing {
     costPerNight: Float!
     photoThumbnail: String!
     numOfBeds: Int!
+    "This will cause n+1 problem for fetching amenities for every listing"
     amenities: [Amenities!]!
+    "This will use dataloader to replace multiple similar requests into a single batch request"
+    listAmenities: [Amenities!]!
 }
 type Amenities {
     id: ID!,

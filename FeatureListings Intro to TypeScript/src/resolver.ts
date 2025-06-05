@@ -21,7 +21,7 @@ export const resolvers: Resolvers = {
                     message: "Listing created successfully",
                     listing: listingResult
                 }
-            }catch (error) {
+            } catch (error) {
                 return {
                     code: 500,
                     success: false,
@@ -34,6 +34,9 @@ export const resolvers: Resolvers = {
     Listing: {
         amenities: ({id, amenities}, _, {dataSources}) => {
             return validateSomeMethodsAvailable(amenities) ? amenities : dataSources.listAPI.getAmenitiesByListingId(id)
+        },
+        listAmenities: ({id, amenities}, _, {dataSources}) => {
+            return dataSources.listAPI.getAmenitiesById(id);
         }
     },
 }

@@ -35,10 +35,13 @@ export type CreateListingInput = {
 
 export type Listing = {
   __typename?: 'Listing';
+  /** This will cause n+1 problem for fetching amenities for every listing */
   amenities: Array<Amenities>;
   costPerNight: Scalars['Float']['output'];
   description: Scalars['String']['output'];
   id: Scalars['ID']['output'];
+  /** This will use dataloader to replace multiple similar requests into a single batch request */
+  listAmenities: Array<Amenities>;
   numOfBeds: Scalars['Int']['output'];
   photoThumbnail: Scalars['String']['output'];
   title: Scalars['String']['output'];
@@ -185,6 +188,7 @@ export type ListingResolvers<ContextType = DataSourcesContext, ParentType extend
   costPerNight?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  listAmenities?: Resolver<Array<ResolversTypes['Amenities']>, ParentType, ContextType>;
   numOfBeds?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   photoThumbnail?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;

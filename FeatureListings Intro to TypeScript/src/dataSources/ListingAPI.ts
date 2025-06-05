@@ -1,9 +1,22 @@
 import {RESTDataSource} from "@apollo/datasource-rest";
 import {Amenities, CreateListingInput, Listing} from "../generated/types";
-import {bold} from "@graphql-codegen/cli/typings/init/helpers";
+import DataLoader from "dataloader";
 
 export class ListingAPIS extends RESTDataSource {
     override baseURL = "https://rt-airlock-services-listing.herokuapp.com/";
+
+    private batchLoader = new DataLoader(
+        async (listingIds: string[]): Promise<Amenities[][]> => {
+            console.log("Making batch request for amenities with IDs:", listingIds);
+            const amenities = await this.get<Amenities[][]>(`/amenities/listings`, {
+                params: {
+                    ids: listingIds.join(',')
+                }
+            });
+            console.log('Batching Amenities:', amenities);
+            return amenities;
+        }
+    )
 
     getFeatureLists(): Promise<Listing[]> {
         return this.get<Listing[]>('featured-listings');
@@ -24,4 +37,10 @@ export class ListingAPIS extends RESTDataSource {
             }
         })
     }
+
+    getAmenitiesById(id: string): Promise<Amenities[]> {
+        console.log("Fetching amenities for listing ID:", id);
+        return this.batchLoader.load(id);
+    }
+    
 }
