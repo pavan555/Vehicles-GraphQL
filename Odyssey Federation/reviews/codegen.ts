@@ -9,7 +9,7 @@ const config: CodegenConfig = {
         contextType: "./context#DataSourceContext",
         federation: true,
         mappers: {
-          Listing: "./models#ListingResponse"
+          Listing: "./models#ListingResponse"  // mapping listing response type (i.e. shared keys from listing subgraph) to __resolveReference of review subgraph
         }
       },
     },
