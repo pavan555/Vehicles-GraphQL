@@ -1,4 +1,4 @@
-extend schema @link(url: "https://specs.apollo.dev/federation/v2.7", import: ["@key"])
+extend schema  @link(url: "https://specs.apollo.dev/federation/v2.7", import: ["@key"])
 
 type Query {
     hello: String,
@@ -6,7 +6,7 @@ type Query {
     featuredListing(id: String!): Listing
 }
 
-type Listing @key(fields: "id"){
+type Listing  @key(fields: "id"){
     id: ID!
     title: String!
     description: String!
