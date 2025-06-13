@@ -1,0 +1,51 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.7", import: ["@key"])
+
+type Query {
+    hello: String,
+    featuredListings: [Listing!]!
+    featuredListing(id: String!): Listing
+}
+
+type Listing @key(fields: "id"){
+    id: ID!
+    title: String!
+    description: String!
+    costPerNight: Float!
+    photoThumbnail: String!
+    numOfBeds: Int!
+    "This will cause n+1 problem for fetching amenities for every listing"
+    amenities: [Amenities!]!
+    "This will use dataloader to replace multiple similar requests into a single batch request"
+    listAmenities: [Amenities!]!
+}
+type Amenities {
+    id: ID!,
+    category: String!,
+    name: String!
+}
+
+input CreateListingInput {
+    title: String!
+    description: String!
+    costPerNight: Float!
+    photoThumbnail: String!
+    numOfBeds: Int!
+    amenities: [ID!]!
+}
+
+type ListingResponse{
+    success: Boolean!
+    code: Int!
+    message: String
+    listing: Listing
+}
+
+type Mutation {
+    createListing(listing: CreateListingInput!): ListingResponse!
+}
+
+type Response {
+    success: Boolean!
+    code: Int!
+    message: String
+}
